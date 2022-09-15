@@ -27,6 +27,9 @@ const divisors = function (num) {
 
 const tribonacci = function (sig, len) {
   const result = [...sig];
+  if (len < sig) {
+    return result;
+  }
 
   return result;
 };
