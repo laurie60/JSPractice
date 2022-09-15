@@ -27,10 +27,15 @@ const divisors = function (num) {
 
 const tribonacci = function (sig, len) {
   const result = [...sig];
-  if (len < sig) {
-    return result;
-  }
+  const reducer = (previousValue, currentValue) => previousValue + currentValue;
 
+  if (len < sig.length) {
+    return result.slice(0, len);
+  }
+  for (i = 3; i < len; i++) {
+    const seq = result.slice(i - 3, i).reduce(reducer);
+    result.push(seq);
+  }
   return result;
 };
 
