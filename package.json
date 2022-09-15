@@ -1,0 +1,23 @@
+{
+  "name": "jspractice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "JSPractice.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurie60/JSPractice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laurie60/JSPractice/issues"
+  },
+  "homepage": "https://github.com/laurie60/JSPractice#readme",
+  "dependencies": {
+    "jest": "^29.0.3"
+  }
+}
