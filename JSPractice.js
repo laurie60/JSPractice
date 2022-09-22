@@ -25,6 +25,14 @@ const divisors = function (num) {
 
 // If you enjoyed this kata more advanced and generalized version of it can be found in the Xbonacci kata
 
+// function tribonacci(signature, n) {
+//   for (var i = 0; i < n - 3; i++) {
+//     // iterate n times
+//     signature.push(signature[i] + signature[i + 1] + signature[i + 2]); // add last 3 array items and push to trib
+//   }
+//   return signature.slice(0, n); //return trib - length of n
+// }
+
 const tribonacci = function (sig, len) {
   const result = [...sig];
   const reducer = (previousValue, currentValue) => previousValue + currentValue;
@@ -39,4 +47,34 @@ const tribonacci = function (sig, len) {
   return result;
 };
 
-module.exports = { divisors, tribonacci };
+// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+
+// If the function is passed a valid PIN string, return true, else return false.
+
+// Examples (Input --> Output)
+
+// "1234"   -->  true
+// "12345"  -->  false
+// "a234"   -->  false
+
+const pinCheck = function (pin) {};
+
+const updateInventory = (arr1, arr2) => {
+  const refObj = {};
+  const output = [];
+  [...arr1, ...arr2].forEach((item) => {
+    item[1] in refObj
+      ? (refObj[item[1]] += item[0])
+      : (refObj[item[1]] = item[0]);
+  });
+
+  for (const key in refObj) {
+    output.push([refObj[key], key]);
+  }
+
+  output.sort((a, b) => (a[1] > b[1] ? 1 : -1)), "output sorted???";
+
+  return output;
+};
+
+module.exports = { divisors, tribonacci, updateInventory };
