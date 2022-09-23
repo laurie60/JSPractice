@@ -77,4 +77,47 @@ const updateInventory = (arr1, arr2) => {
   return output;
 };
 
-module.exports = { divisors, tribonacci, updateInventory };
+// From FreeCodeCamp Return the number of total permutations of the provided string that don't have repeated consecutive letters. Assume that all characters in the provided string are each unique.
+
+// For example, aab should return 2 because it has 6 total permutations (aab, aab, aba, aba, baa, baa), but only 2 of them (aba and aba) don't have the same letter (in this case a) repeating.
+
+function permAlone(string) {
+  function perms(str) {
+    let result = [];
+
+    if (str.length === 0) return "";
+    if (str.length === 1) return str;
+    for (let i = 0; i < str.length; i++) {
+      const currentNum = str[i];
+      const remainingStr = str.slice(0, i).concat(str.slice(i + 1));
+      const remainingStrPermuted = perms(remainingStr);
+
+      for (let j = 0; j < remainingStrPermuted.length; j++) {
+        const permutedArray = currentNum.concat(remainingStrPermuted[j]);
+
+        result.push(permutedArray);
+      }
+    }
+    return result;
+  }
+
+  allPerms = perms(string);
+
+  let numPerms = allPerms.length;
+
+  if (numPerms > 1) {
+    allPerms.forEach((perm) => {
+      for (let i = 0; i < perm.length - 1; i++) {
+        console.log(perm, i, perm[i] === perm[i + 1]);
+        if (perm[i] === perm[i + 1]) {
+          numPerms -= 1;
+          break;
+        }
+      }
+    });
+  }
+
+  return numPerms;
+}
+
+module.exports = { divisors, tribonacci, updateInventory, permAlone };

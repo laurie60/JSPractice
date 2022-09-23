@@ -1,4 +1,9 @@
-const { divisors, tribonacci, updateInventory } = require("../JSPractice");
+const {
+  divisors,
+  tribonacci,
+  updateInventory,
+  permAlone,
+} = require("../JSPractice");
 
 describe("divisors", () => {
   it("returns an empty array if passed null argument", () => {
@@ -42,7 +47,7 @@ describe("tribonnaci", () => {
   });
 });
 
-describe.only("updateInventory", () => {
+describe("updateInventory", () => {
   let currInv = [
     [21, "Bowling Ball"],
     [2, "Dirty Sock"],
@@ -109,5 +114,33 @@ describe.only("updateInventory", () => {
       [10, "Microphone"],
       [16, "spaghetti"],
     ]);
+  });
+
+  describe.only("permAlone", () => {
+    it("returns 0 if passed an empty string", () => {
+      const input = "";
+      const result = permAlone(input);
+      expect(result).toEqual(0);
+    });
+    it("returns 0 if passed array with only one alphabetical letter multiple times", () => {
+      const input = "aaaaaaaa";
+      const result = permAlone(input);
+      expect(result).toEqual(0);
+    });
+    it("returns 1 if passed one letter", () => {
+      const input = "a";
+      const result = permAlone(input);
+      expect(result).toEqual(1);
+    });
+    it("returns 2 if passed ab", () => {
+      const input = "a";
+      const result = permAlone(input);
+      expect(result).toEqual(1);
+    });
+    it.only("returns  if passed hello", () => {
+      const input = "aaabb";
+      const result = permAlone(input);
+      expect(result).toEqual(12);
+    });
   });
 });
