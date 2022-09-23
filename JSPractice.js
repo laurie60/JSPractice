@@ -3,7 +3,7 @@
 const divisors = function (num) {
   const result = [];
 
-  for (let i = 2; i < Math.floor(num / 2); i++) {
+  for (let i = 2; i <= Math.floor(num / 2); i++) {
     num % i === 0 && result.push(i);
     console.log(result);
   }
@@ -101,14 +101,14 @@ function permAlone(string) {
     return result;
   }
 
-  allPerms = perms(string);
+  const allPerms = perms(string);
 
   let numPerms = allPerms.length;
 
   if (numPerms > 1) {
     allPerms.forEach((perm) => {
       for (let i = 0; i < perm.length - 1; i++) {
-        console.log(perm, i, perm[i] === perm[i + 1]);
+        // console.log(perm, i, perm[i] === perm[i + 1]);
         if (perm[i] === perm[i + 1]) {
           numPerms -= 1;
           break;
@@ -120,4 +120,35 @@ function permAlone(string) {
   return numPerms;
 }
 
-module.exports = { divisors, tribonacci, updateInventory, permAlone };
+// Given an array arr, find element pairs whose sum equal the second argument arg and return the sum of their indices.
+
+// You may use multiple pairs that have the same numeric elements but different indices. Each pair should use the lowest possible available indices. Once an element has been used it cannot be reused to pair with another element. For instance, pairwise([1, 1, 2], 3) creates a pair [2, 1] using the 1 at index 0 rather than the 1 at index 1, because 0+2 < 1+2.
+
+// For example pairwise([7, 9, 11, 13, 15], 20) returns 6. The pairs that sum to 20 are [7, 13] and [9, 11]. We can then write out the array with their indices and values.
+
+function pairWise(array, num) {
+  let result = 0;
+  let skipIndex = [];
+
+  if (!array.length || array.length === 1) {
+    return result;
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (j !== i && !skipIndex.includes(j) && !skipIndex.includes(i)) {
+        if (array[i] + array[j] === num) {
+          // console.log(array[i], array[j], i, j, "array position and value");
+          result += i + j;
+          skipIndex.push(j, i);
+        }
+        // console.log(array[j], "<<<console.log(array[j])");
+        // console.log(skipIndex, "<<<skipIndex");
+      }
+    }
+  }
+
+  return result;
+}
+
+module.exports = { divisors, tribonacci, updateInventory, permAlone, pairWise };

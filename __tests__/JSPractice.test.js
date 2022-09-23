@@ -3,6 +3,7 @@ const {
   tribonacci,
   updateInventory,
   permAlone,
+  pairWise,
 } = require("../JSPractice");
 
 describe("divisors", () => {
@@ -22,6 +23,11 @@ describe("divisors", () => {
     const num = 18;
     const result = divisors(num);
     expect(result).toEqual([2, 3, 6, 9]);
+  });
+  it("returns [5] if passed 25 as argument", () => {
+    const num = 25;
+    const result = divisors(num);
+    expect(result).toEqual([5]);
   });
 });
 
@@ -56,7 +62,6 @@ describe("updateInventory", () => {
   ];
 
   it("returns a copy of the inventory array if passed an empty update array", () => {
-    console.log(currInv);
     const update = [];
     const result = updateInventory(currInv, update);
     expect(result).toEqual(currInv);
@@ -116,7 +121,7 @@ describe("updateInventory", () => {
     ]);
   });
 
-  describe.only("permAlone", () => {
+  describe("permAlone", () => {
     it("returns 0 if passed an empty string", () => {
       const input = "";
       const result = permAlone(input);
@@ -137,10 +142,34 @@ describe("updateInventory", () => {
       const result = permAlone(input);
       expect(result).toEqual(1);
     });
-    it.only("returns  if passed hello", () => {
+    it("returns 12  if passed aaabb", () => {
       const input = "aaabb";
       const result = permAlone(input);
       expect(result).toEqual(12);
+    });
+  });
+
+  describe("pairWise", () => {
+    it("returns 0 if passed an empty array and any number", () => {
+      const input = ([], 12);
+      const result = pairWise(input);
+      expect(result).toEqual(0);
+    });
+    it("returns 0 if passed an array length 1 and any number", () => {
+      const result = pairWise([6], 12);
+      expect(result).toEqual(0);
+    });
+    it("returns 1 if passed an array length 1 and any number", () => {
+      const result = pairWise([6, 3, 1], 9);
+      expect(result).toEqual(1);
+    });
+    it("returns 10 if passed the given array", () => {
+      const result = pairWise([0, 0, 0, 0, 1, 1], 1);
+      expect(result).toEqual(10);
+    });
+    it("returns 11 if passed the given array (index (1+3)+(2+5))", () => {
+      const result = pairWise([1, 4, 2, 3, 0, 5], 7);
+      expect(result).toEqual(11);
     });
   });
 });
