@@ -4,6 +4,7 @@ const {
   updateInventory,
   permAlone,
   pairWise,
+  bubbleSort,
 } = require("../JSPractice");
 
 describe("divisors", () => {
@@ -170,6 +171,33 @@ describe("updateInventory", () => {
     it("returns 11 if passed the given array (index (1+3)+(2+5))", () => {
       const result = pairWise([1, 4, 2, 3, 0, 5], 7);
       expect(result).toEqual(11);
+    });
+  });
+
+  describe.only("bubbleSort", () => {
+    it("returns an empty array if passed an empty array ", () => {
+      const input = [];
+      const result = bubbleSort(input);
+      expect(result).toEqual([]);
+    });
+    it("returns an [1, 2] if passed an [2,1] ", () => {
+      const input = [2, 1];
+      const result = bubbleSort(input);
+      expect(result).toEqual([1, 2]);
+    });
+    it("returns an [1,2,3] if passed a [3,2,1] ", () => {
+      const input = [3, 2, 1];
+      const result = bubbleSort(input);
+      expect(result).toEqual([1, 2, 3]);
+    });
+    it("returns correct answer if passed  if passed a larger array of numbers ", () => {
+      const input = [
+        1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92,
+      ];
+      const result = bubbleSort(input);
+      expect(result).toEqual([
+        1, 1, 2, 2, 4, 8, 32, 43, 43, 55, 63, 92, 123, 123, 234, 345, 5643,
+      ]);
     });
   });
 });

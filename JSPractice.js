@@ -147,8 +147,47 @@ function pairWise(array, num) {
       }
     }
   }
-
   return result;
 }
 
-module.exports = { divisors, tribonacci, updateInventory, permAlone, pairWise };
+function bubbleSort(array) {
+  // Only change code below this line
+  if (array.length <= 1) {
+    return array;
+  }
+  function sort(array) {
+    for (let i = 1; i < array.length; i++) {
+      if (array[i] < array[i - 1]) {
+        [array[i - 1], array[i]] = [array[i], array[i - 1]];
+      }
+    }
+    return array;
+  }
+
+  function check(array) {
+    for (let j = 1; j < array.length; j++) {
+      if (array[j] < array[j - 1]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  let answer = false;
+
+  do {
+    answer = check(array);
+    sort(array);
+  } while (answer === false);
+
+  return array;
+}
+
+module.exports = {
+  divisors,
+  tribonacci,
+  updateInventory,
+  permAlone,
+  pairWise,
+  bubbleSort,
+};
