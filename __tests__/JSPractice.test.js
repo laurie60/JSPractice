@@ -5,6 +5,8 @@ const {
   permAlone,
   pairWise,
   bubbleSort,
+  solution,
+  mixedupAB,
 } = require("../JSPractice");
 
 describe("divisors", () => {
@@ -174,7 +176,7 @@ describe("updateInventory", () => {
     });
   });
 
-  describe.only("bubbleSort", () => {
+  describe("bubbleSort", () => {
     it("returns an empty array if passed an empty array ", () => {
       const input = [];
       const result = bubbleSort(input);
@@ -200,4 +202,49 @@ describe("updateInventory", () => {
       ]);
     });
   });
+
+  describe("solution", () => {
+    it("returns 1 if passed an empty array", () => {
+      const input = [];
+      const result = solution(input);
+      expect(result).toEqual(1);
+    });
+    it("returns 5 if passed an array of whose lowest missing number is 5", () => {
+      const input = [1, 1, 3, 6, 4, 2, 7, 8, 4, 2, 4, 6, 7, 8, 3, 9, 0, -10];
+      const result = solution(input);
+      expect(result).toEqual(5);
+    });
+    it("returns 1 if passed an array of negative numbers", () => {
+      const input = [-10, -12, -5, -9, -23, -1, -2];
+      const result = solution(input);
+      expect(result).toEqual(1);
+    });
+    it("returns 5 if passed an array of 2-4 with no gaps", () => {
+      const input = [2, 3, 4];
+      const result = solution(input);
+      expect(result).toEqual(5);
+    });
+  });
+  describe.only("mixedupAB", () => {
+    it("returns a if passed a arument of one a", () => {
+      const A = 1;
+      const B = 0;
+      const result = mixedupAB(A, B);
+      expect(result).toEqual("a");
+    });
+    it("returns 1 if passed an empty array", () => {
+      const A = 2;
+      const B = 1;
+      const result = mixedupAB(A, B);
+      expect(result).toEqual("aba");
+    });
+    it("returns 1 if passed an empty array", () => {
+      const A = 120;
+      const B = 60;
+      const result = mixedupAB(A, B);
+      expect(result).toEqual("aba");
+    });
+  });
 });
+abababababaaa;
+aabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaaabababa;

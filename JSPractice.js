@@ -151,6 +151,7 @@ function pairWise(array, num) {
 }
 
 function bubbleSort(array) {
+  const result = [...array];
   // Only change code below this line
   if (array.length <= 1) {
     return array;
@@ -176,11 +177,62 @@ function bubbleSort(array) {
   let answer = false;
 
   do {
-    answer = check(array);
-    sort(array);
+    answer = check(result);
+    sort(result);
   } while (answer === false);
 
-  return array;
+  return result;
+}
+
+function solution(A) {
+  if (!A.length) {
+    return 1;
+  }
+  const sorted = A.sort(function (a, b) {
+    return a - b;
+  });
+  let result = 0;
+  for (let i = 0; i < sorted.length - 1; i++) {
+    if (
+      sorted[i + 1] !== sorted[i] + 1 &&
+      sorted[i] !== sorted[i + 1] &&
+      sorted[i] + 1 > 0
+    ) {
+      result = sorted[i] + 1;
+      return result;
+    }
+  }
+  if (sorted[sorted.length - 1] < 1) {
+    return 1;
+  }
+  return sorted[sorted.length - 1] + 1;
+}
+
+function mixedupAB(A, B) {
+  console.log(A, B, "a and b");
+  console.log(A);
+  console.log(B);
+
+  let result = "";
+  if (!A && !B) {
+    return result;
+  }
+  if (A === 1 && !B) {
+    return "a";
+  }
+  if (B === 1 && !A) {
+    return "b";
+  }
+  // console.log(A, B, "a and b");
+  for (i = 0; i < A + B; i++) {
+    // console.log(i);
+    i % 2 === 0 ? (result += "a") : (result += "b");
+  }
+  console.log(result, "result");
+
+  return result;
+
+  // write your code in JavaScript (Node.js 8.9.4)
 }
 
 module.exports = {
@@ -190,4 +242,6 @@ module.exports = {
   permAlone,
   pairWise,
   bubbleSort,
+  solution,
+  mixedupAB,
 };
