@@ -9,6 +9,10 @@ const {
   mixedupAB,
   rgb,
   bouncingBall,
+  sqInRect,
+  RecSqInRect,
+  validParentheses,
+  reValidParentheses,
 } = require("../JSPractice");
 
 describe("divisors", () => {
@@ -284,7 +288,7 @@ describe("updateInventory", () => {
       expect(result).toEqual("00FFFF");
     });
   });
-  describe.only("bouncingBall", () => {
+  describe("bouncingBall", () => {
     it("returns -1 if bounce is >=1 ", () => {
       const h = 3;
       const bounce = 1;
@@ -312,6 +316,63 @@ describe("updateInventory", () => {
       const window = 1.5;
       const result = bouncingBall(h, bounce, window);
       expect(result).toEqual(15);
+    });
+  });
+  describe("sqInRect", () => {
+    it("retuns [3, 2, 1, 1] ", () => {
+      const lng = 5;
+      const wdth = 3;
+      const result = sqInRect(lng, wdth);
+      expect(result).toEqual([3, 2, 1, 1]);
+    });
+  });
+
+  describe("RecSqInRect", () => {
+    it("retuns [3, 2, 1, 1] ", () => {
+      const lng = 16;
+      const wdth = 1;
+      const result = RecSqInRect(lng, wdth);
+      expect(result).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+    });
+  });
+
+  describe("validParentheses", () => {
+    it("retuns false if passed empty string ", () => {
+      const input = "";
+      const result = validParentheses(input);
+      expect(result).toEqual(false);
+    });
+    it("retuns false if passed single peren ", () => {
+      const input = "(";
+      const result = validParentheses(input);
+      expect(result).toEqual(false);
+    });
+    it("retuns true if passed valid paren string ", () => {
+      const input = "(())((()())())";
+      const result = validParentheses(input);
+      expect(result).toEqual(true);
+    });
+    it("retuns false if passed string with same total num of opening and closing perens but wrong order  ", () => {
+      const input = ")()()()(";
+      const result = validParentheses(input);
+      expect(result).toEqual(false);
+    });
+  });
+  describe.only("reValidParentheses", () => {
+    it("retuns false if passed single peren ", () => {
+      const input = "(";
+      const result = reValidParentheses(input);
+      expect(result).toEqual(false);
+    });
+    it("retuns true if passed valid paren string ", () => {
+      const input = "(())((()())())";
+      const result = reValidParentheses(input);
+      expect(result).toEqual(true);
+    });
+    it("retuns false if passed string with same total num of opening and closing perens but wrong order  ", () => {
+      const input = ")()()()(";
+      const result = reValidParentheses(input);
+      expect(result).toEqual(false);
     });
   });
 });

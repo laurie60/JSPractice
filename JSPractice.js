@@ -283,12 +283,78 @@ function bouncingBall(h, bounce, window) {
   if (bounce <= 0 || bounce >= 1 || window >= h) {
     return -1;
   }
+  //recursive base case:
   if (h * bounce < window) {
     return 1;
   }
   return 2 + bouncingBall(h * bounce, bounce, window);
 }
+// top answer on codewars is below, it is nor recursive
+//(uses while loop instead). I think mine is clearer!!
+// function bouncingBall(h, bounce, window) {
+//   if (h <= 0 || bounce >= 1 || bounce <= 0 || window >= h) return -1;
+//   let seen = 0;
 
+//   while (h > window) {
+//     seen += 1;
+//     h *= bounce;
+//     if (h > window) seen += 1;
+//   }
+
+//   return seen;
+// }
+
+function sqInRect(lng, wdth) {
+  const squares = [];
+  if (wdth > lng) {
+    [wdth, lng] = [lng, wdth];
+  }
+  while (lng && wdth > 0) {
+    squares.push(wdth);
+    lng = lng - wdth;
+    if (wdth > lng) {
+      [wdth, lng] = [lng, wdth];
+    }
+  }
+  return squares;
+}
+
+function RecSqInRect(lng, wdth, initial = true) {
+  if (lng === wdth) {
+    return initial ? null : lng;
+  }
+
+  if (wdth > lng) {
+    [wdth, lng] = [lng, wdth];
+  }
+
+  lng = lng - wdth;
+
+  return [wdth].concat(RecSqInRect(lng, wdth, false));
+}
+function validParentheses(parens) {
+  // your code here ..
+  let odds = false;
+  if (!parens) return false;
+  let notMatching = 0;
+  [...parens].forEach((paren) => {
+    if (notMatching === 0 && paren === ")") odds = true;
+    if (paren === "(") notMatching += 1;
+    if (paren === ")") notMatching -= 1;
+    console.log(notMatching, "notmatchign");
+  });
+
+  return notMatching === 0 && !odds;
+}
+//below is the most interesting codewars solution. It is very cool
+function reValidParentheses(parens) {
+  var re = /\(\)/;
+  while (re.test(parens)) {
+    console.log(parens);
+    parens = parens.replace(re, "");
+  }
+  return !parens;
+}
 module.exports = {
   divisors,
   tribonacci,
@@ -300,4 +366,8 @@ module.exports = {
   mixedupAB,
   rgb,
   bouncingBall,
+  sqInRect,
+  RecSqInRect,
+  validParentheses,
+  reValidParentheses,
 };
