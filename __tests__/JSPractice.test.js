@@ -7,6 +7,7 @@ const {
   bubbleSort,
   solution,
   mixedupAB,
+  rgb,
 } = require("../JSPractice");
 
 describe("divisors", () => {
@@ -225,7 +226,7 @@ describe("updateInventory", () => {
       expect(result).toEqual(5);
     });
   });
-  describe.only("mixedupAB", () => {
+  describe("mixedupAB", () => {
     it("returns a if passed a arument of one a", () => {
       const A = 1;
       const B = 0;
@@ -245,6 +246,41 @@ describe("updateInventory", () => {
       expect(result).toEqual("aba");
     });
   });
+  describe.only("rgb", () => {
+    it("returns 000000 if passed 0 for all values", () => {
+      const r = 0;
+      const g = 0;
+      const b = 0;
+      const result = rgb(r, g, b);
+      expect(result).toEqual("000000");
+    });
+    it("returns FFFFFF if passed 255 for all values", () => {
+      const r = 255;
+      const g = 255;
+      const b = 255;
+      const result = rgb(r, g, b);
+      expect(result).toEqual("FFFFFF");
+    });
+    it("returns 0FBC3B if passed r=15, g=188, b=59 ", () => {
+      const r = 15;
+      const g = 188;
+      const b = 59;
+      const result = rgb(r, g, b);
+      expect(result).toEqual("0FBC3B");
+    });
+    it("handles negative numbers correctly", () => {
+      const r = 0;
+      const g = 188;
+      const b = 59;
+      const result = rgb(r, g, b);
+      expect(result).toEqual("00BC3B");
+    });
+    it("handles numbers above 255 correctly", () => {
+      const r = -20;
+      const g = 400;
+      const b = 255;
+      const result = rgb(r, g, b);
+      expect(result).toEqual("00FFFF");
+    });
+  });
 });
-abababababaaa;
-aabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaabaaabababa;

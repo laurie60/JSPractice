@@ -235,6 +235,52 @@ function mixedupAB(A, B) {
   // write your code in JavaScript (Node.js 8.9.4)
 }
 
+function rgb(r, g, b) {
+  function hex(num) {
+    const letters = ["A", "B", "C", "D", "E", "F"];
+    console.log(letters[num], "letters num etc");
+    return letters[num];
+  }
+  function toHex(num) {
+    if (num <= 0) {
+      return "00";
+    }
+    if (num >= 255) {
+      return "FF";
+    }
+    let second = Math.floor(num / 16);
+    let first = num % 16;
+    if (second > 9) {
+      second = hex(second - 10);
+    }
+    if (first > 9) {
+      first = hex(first - 10);
+    }
+    return second.toString() + first.toString();
+  }
+  return toHex(r) + toHex(g) + toHex(b);
+}
+
+// top codewars answer of the above, the Number(d).toString(16) is 
+// a built in way to get JS ot convert to Hex, the slice-2 takes the last two
+// digits, which is how you can add a leading 0 if number isbelow 16 (clever!!
+)
+// function rgb(r, g, b) {
+//   return toHex(r) + toHex(g) + toHex(b);
+// }
+
+// function toHex(d) {
+//   if (d < 0) {
+//     return "00";
+//   }
+//   if (d > 255) {
+//     return "FF";
+//   }
+//   return ("0" + Number(d).toString(16)).slice(-2).toUpperCase();
+// }
+
+
+
 module.exports = {
   divisors,
   tribonacci,
@@ -244,4 +290,5 @@ module.exports = {
   bubbleSort,
   solution,
   mixedupAB,
+  rgb,
 };
