@@ -13,6 +13,7 @@ const {
   RecSqInRect,
   validParentheses,
   reValidParentheses,
+  digPow,
 } = require("../JSPractice");
 
 describe("divisors", () => {
@@ -358,7 +359,7 @@ describe("updateInventory", () => {
       expect(result).toEqual(false);
     });
   });
-  describe.only("reValidParentheses", () => {
+  describe("reValidParentheses", () => {
     it("retuns false if passed single peren ", () => {
       const input = "(";
       const result = reValidParentheses(input);
@@ -373,6 +374,27 @@ describe("updateInventory", () => {
       const input = ")()()()(";
       const result = reValidParentheses(input);
       expect(result).toEqual(false);
+    });
+  });
+
+  describe.only("digPow", () => {
+    it("retuns 1 if passed n 1 and p 1 ", () => {
+      const n = 1;
+      const p = 1;
+      const result = digPow(n, p);
+      expect(result).toEqual(1);
+    });
+    it("retuns 1 if passed n= 89 and p =1 ", () => {
+      const n = 89;
+      const p = 1;
+      const result = digPow(n, p);
+      expect(result).toEqual(1);
+    });
+    it("retuns 51 if passed n= 46288 and p= 3", () => {
+      const n = 46288;
+      const p = 3;
+      const result = digPow(n, p);
+      expect(result).toEqual(51);
     });
   });
 });

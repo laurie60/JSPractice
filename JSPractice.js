@@ -355,6 +355,32 @@ function reValidParentheses(parens) {
   }
   return !parens;
 }
+
+//Note: n and p will always be given as strictly positive integers.
+//Playing with digits from codewars
+
+function digPow(n, p) {
+  let exp = p - 1;
+  const number2 = String(n)
+    .split("")
+    .map((num) => {
+      exp += 1;
+      return num ** exp;
+    })
+    .reduce((prev, curr) => prev + curr, 0);
+
+  if (number2 % n === 0) {
+    return number2 / n;
+  }
+  return -1;
+}
+//highest ranking solution on codewars. dont need the seperate map
+// function digPow(n, p) {
+//   var x = String(n)
+//     .split("")
+//     .reduce((s, d, i) => s + Math.pow(d, p + i), 0);
+//   return x % n ? -1 : x / n;
+// }
 module.exports = {
   divisors,
   tribonacci,
@@ -370,4 +396,5 @@ module.exports = {
   RecSqInRect,
   validParentheses,
   reValidParentheses,
+  digPow,
 };
