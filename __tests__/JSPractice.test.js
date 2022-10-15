@@ -8,6 +8,7 @@ const {
   solution,
   mixedupAB,
   rgb,
+  bouncingBall,
 } = require("../JSPractice");
 
 describe("divisors", () => {
@@ -246,7 +247,7 @@ describe("updateInventory", () => {
       expect(result).toEqual("aba");
     });
   });
-  describe.only("rgb", () => {
+  describe("rgb", () => {
     it("returns 000000 if passed 0 for all values", () => {
       const r = 0;
       const g = 0;
@@ -281,6 +282,36 @@ describe("updateInventory", () => {
       const b = 255;
       const result = rgb(r, g, b);
       expect(result).toEqual("00FFFF");
+    });
+  });
+  describe.only("bouncingBall", () => {
+    it("returns -1 if bounce is >=1 ", () => {
+      const h = 3;
+      const bounce = 1;
+      const window = 0.5;
+      const result = bouncingBall(h, bounce, window);
+      expect(result).toEqual(-1);
+    });
+    it("returns -1 if bounce is <=0 ", () => {
+      const h = 3;
+      const bounce = 0;
+      const window = 0.5;
+      const result = bouncingBall(h, bounce, window);
+      expect(result).toEqual(-1);
+    });
+    it("returns -1 if window is >= height ", () => {
+      const h = 3;
+      const bounce = 0;
+      const window = 3;
+      const result = bouncingBall(h, bounce, window);
+      expect(result).toEqual(-1);
+    });
+    it("returns correct answer if passed valid inputs ", () => {
+      const h = 30;
+      const bounce = 0.66;
+      const window = 1.5;
+      const result = bouncingBall(h, bounce, window);
+      expect(result).toEqual(15);
     });
   });
 });

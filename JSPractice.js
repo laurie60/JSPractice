@@ -261,10 +261,9 @@ function rgb(r, g, b) {
   return toHex(r) + toHex(g) + toHex(b);
 }
 
-// top codewars answer of the above, the Number(d).toString(16) is 
+// top codewars answer of the above, the Number(d).toString(16) is
 // a built in way to get JS ot convert to Hex, the slice-2 takes the last two
-// digits, which is how you can add a leading 0 if number isbelow 16 (clever!!
-)
+// digits, which is how you can add a leading 0 if number isbelow 16 (clever!!)
 // function rgb(r, g, b) {
 //   return toHex(r) + toHex(g) + toHex(b);
 // }
@@ -279,7 +278,16 @@ function rgb(r, g, b) {
 //   return ("0" + Number(d).toString(16)).slice(-2).toUpperCase();
 // }
 
-
+function bouncingBall(h, bounce, window) {
+  // your code here
+  if (bounce <= 0 || bounce >= 1 || window >= h) {
+    return -1;
+  }
+  if (h * bounce < window) {
+    return 1;
+  }
+  return 2 + bouncingBall(h * bounce, bounce, window);
+}
 
 module.exports = {
   divisors,
@@ -291,4 +299,5 @@ module.exports = {
   solution,
   mixedupAB,
   rgb,
+  bouncingBall,
 };
