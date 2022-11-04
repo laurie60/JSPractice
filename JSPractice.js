@@ -381,6 +381,41 @@ function digPow(n, p) {
 //     .reduce((s, d, i) => s + Math.pow(d, p + i), 0);
 //   return x % n ? -1 : x / n;
 // }
+
+function high(x) {
+  words = x.split(" ");
+  let wordScore = 0;
+  let highestScore = 0;
+  let topWord = "";
+  words.forEach((word) => {
+    wordScore = 0;
+    [...word].forEach((letter) => {
+      wordScore += letter.charCodeAt(0);
+    });
+    if (wordScore > highestScore) {
+      highestScore = wordScore;
+      topWord = word;
+    }
+  });
+  return topWord;
+}
+// top solution from codewars, very clever!
+function high(s) {
+  let as = s
+    .split(" ")
+    .map((s) => [...s].reduce((a, b) => a + b.charCodeAt(0) - 96, 0));
+  return s.split(" ")[as.indexOf(Math.max(...as))];
+}
+function high(s) {
+  let as = s.split(" ").map((s) =>
+    [...s].reduce((a, b) => {
+      console.log(b);
+      return a + b.charCodeAt(0) - 96, 0;
+    })
+  );
+  return s.split(" ")[as.indexOf(Math.max(...as))];
+}
+
 module.exports = {
   divisors,
   tribonacci,
