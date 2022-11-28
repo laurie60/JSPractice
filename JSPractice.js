@@ -415,6 +415,120 @@ function high(s) {
   );
   return s.split(" ")[as.indexOf(Math.max(...as))];
 }
+// function solution(A, K) {
+//   const result = [...A];
+//   for (let i = 0; i < K; i++) {
+//     const lastResult = [...result];
+//     result.forEach((element, index) => {
+//       if (index === 0) {
+//         result[index] = lastResult[A.length - 1];
+//       } else result[index] = lastResult[index - 1];
+//     });
+//   }
+//   return result;
+// }
+
+// let A = [1, 2, 3, 4];
+// let K = 4;
+
+// console.log(solution(A, K));
+
+// function solution(A) {
+//   const lonely = [];
+//   A.forEach((number) => {
+//     if (!lonely.includes(number)) {
+//       lonely.push(number);
+//     } else {
+//       const index = lonely.indexOf(number);
+//       lonely.splice(index, 1);
+//     }
+//   });
+//   const [result] = lonely;
+
+//   return result;
+//   // write your code in JavaScript (Node.js 14)
+// }
+// const A = [1, 2, 6, 1, 2];
+
+// console.log(solution(A));
+
+// function solution(A) {
+//   if (A.length === 1) {
+//     return A;
+//   }
+
+//   A.forEach((number, i) => {
+//     A.forEach((num, j)=> {
+//         if(A[i]===A[j] && i !==j) {
+//             A.splice
+//         }
+
+//     })
+
+//   });
+//   const [result] = lonely;
+
+//   return result;
+//   // write your code in JavaScript (Node.js 14)
+// }
+// const A = [1, 2, 6, 1, 2];
+
+// console.log(solution(A));
+// function solution(A) {
+//   A.sort();
+//   for (let i = 0; i < A.length; i = i + 2) {
+//     if (A[i] !== A[i + 1]) {
+//       return A[i];
+//     }
+//     if (!A[i + 1]) {
+//       return A[i];
+//     }
+//   }
+// }
+
+// const A = [1, 7, 2, 6, 1, 2, 7];
+
+// console.log(solution(A));
+// console.log(Math.ceil(85 / 30));
+
+// function solution(A) {
+//   const sorted = A.sort(function (a, b) {
+//     return a - b;
+//   });
+//   if (!sorted.length || sorted[0] === 2) {
+//     return 1;
+//   }
+//   for (let i = 0; i < sorted.length; i++) {
+//     if (sorted[i] !== sorted[i + 1] - 1) {
+//       return sorted[i] + 1;
+//     }
+//   }
+// }
+
+// const arry = [];
+// for (let i = 1; i < 10000; i++) {
+//   arry.push(i);
+// }
+
+// console.log(solution([1, 2, 3, 4, 5, 6, 8, 9]), "<<<<<element +1");
+function solution(A) {
+  let head = A[0];
+  let tail = A.slice(1).reduce((a, b) => a + b, 0);
+  let result = Math.abs(head - tail);
+
+  // write your code in JavaScript (Node.js 14)
+  for (let i = 0; i < A.length; i++) {
+    head += A[i + 1];
+    tail -= A[i + 1];
+    if (Math.abs(head - tail) < result) {
+      result = Math.abs(head - tail);
+    }
+  }
+
+  return result;
+}
+const array = [3, 1, 2, 4, 3];
+console.log(solution(array));
 
 module.exports = {
   divisors,
